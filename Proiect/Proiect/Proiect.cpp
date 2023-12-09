@@ -69,16 +69,21 @@ unsigned int skyboxIndices[] =
 	3, 7, 6,
 	6, 2, 3
 };
-
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+		glfwSetWindowShouldClose(window, GLFW_TRUE);
+}
 Camera* camera = nullptr;
 int main()
 {
 	// Initialize GLFW
 	glfwInit();
-	
+
 
 	GLFWwindow* window = glfwCreateWindow(width, height, "Proiect", NULL, NULL);
-	camera=new Camera(width, height, glm::vec3(0.0f, 0.0f, 2.0f));
+	glfwSetKeyCallback(window, key_callback);
+	camera = new Camera(width, height, glm::vec3(0.0f, 0.0f, 2.0f));
 	// Error check if the window fails to create
 	if (window == NULL)
 	{
@@ -87,7 +92,9 @@ int main()
 		return -1;
 	}
 	// Introduce the window into the current context
+	processInput(window);
 	glfwMakeContextCurrent(window);
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 	glfwSetCursorPosCallback(window, mouse_callback);
 	glfwSetScrollCallback(window, scroll_callback);
@@ -101,14 +108,14 @@ int main()
 
 
 	// Generates Shader objects
-	
+
 	Shader skyboxShader("skyboxShader.vs", "skyboxShader.fs");
 
 	// Take care of all the light related things
 	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
 
-	
+
 	skyboxShader.Use();
 	glUniform1i(glGetUniformLocation(skyboxShader.ID, "skybox"), 0);
 
@@ -162,7 +169,7 @@ int main()
 
 	// All the faces of the cubemap (make sure they are in this exact order)
 	std::string facesCubemap[6] =
-	{	
+	{
 		parentDir + "/Skybox/right.jpg",
 		parentDir + "/Skybox/left.jpg",
 		parentDir + "/Skybox/top.jpg",
@@ -192,7 +199,7 @@ int main()
 		unsigned char* data = stbi_load(facesCubemap[i].c_str(), &width, &height, &nrChannels, 0);
 		if (data)
 		{
-				//stbi_set_flip_vertically_on_load(false);
+			//stbi_set_flip_vertically_on_load(false);
 			glTexImage2D
 			(
 				GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,
@@ -213,7 +220,7 @@ int main()
 			stbi_image_free(data);
 		}
 	}
-	
+
 	// Main while loop
 	while (!glfwWindowShouldClose(window))
 	{
@@ -241,9 +248,9 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		// Handles camera inputs (delete this if you have disabled VSync)
-		
+
 		camera->Inputs(window);
-		
+		processInput(window);
 		camera->updateMatrix(45.0f, 0.1f, 100.0f);
 
 		// Since the cubemap will always have a depth of 1.0, we need that equal sign so it doesn't get discarded
@@ -258,8 +265,8 @@ int main()
 		projection = glm::perspective(glm::radians(45.0f), (float)width / height, 0.1f, 100.0f);
 		glUniformMatrix4fv(glGetUniformLocation(skyboxShader.ID, "view"), 1, GL_FALSE, glm::value_ptr(view));
 		glUniformMatrix4fv(glGetUniformLocation(skyboxShader.ID, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
-		
-			
+
+
 		// Draws the cubemap as the last object so we can save a bit of performance by discarding all fragments
 		// where an object is present (a depth of 1.0f will always fail against any object's depth value)
 		glBindVertexArray(skyboxVAO);
@@ -271,7 +278,7 @@ int main()
 		// Switch back to the normal depth function
 		glDepthFunc(GL_LESS);
 
-		
+
 		// Swap the back buffer with the front buffer
 		glfwSwapBuffers(window);
 		// Take care of all GLFW events
