@@ -1,2 +1,8 @@
-﻿  Proiect.cpp
-  Proiect.vcxproj -> D:\G3D\work\Proiect\Debug\Proiect.exe
+﻿  Camera.cpp
+  Floor.cpp
+  Proiect.cpp
+  Shader.cpp
+D:\antr\MuzeuCuAnimale\Proiect\Proiect\Shader.cpp(106,27): warning C4244: 'argument': conversion from 'std::streamoff' to 'const unsigned int', possible loss of data
+  stb.cpp
+  Generating Code...
+  Proiect.vcxproj -> D:\antr\MuzeuCuAnimale\Proiect\Debug\Proiect.exe

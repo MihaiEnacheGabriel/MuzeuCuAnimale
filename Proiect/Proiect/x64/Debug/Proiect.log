@@ -1,0 +1,12 @@
+﻿  Camera.cpp
+D:\antr\MuzeuCuAnimale\Proiect\Proiect\Camera.h(6,10): fatal  error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Floor.cpp
+D:\antr\MuzeuCuAnimale\Proiect\Proiect\Shader.h(9,10): fatal  error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Proiect.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.37.32822\include\filesystem(13): warning STL4038: The contents of <filesystem> are available only with C++17 or later.
+D:\antr\MuzeuCuAnimale\Proiect\Proiect\Proiect.cpp(5,10): fatal  error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Shader.cpp
+D:\antr\MuzeuCuAnimale\Proiect\Proiect\Shader.h(9,10): fatal  error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  stb.cpp
+D:\antr\MuzeuCuAnimale\Proiect\Proiect\stb.cpp(2,9): fatal  error C1083: Cannot open include file: 'stb_image.h': No such file or directory
+  Generating Code...

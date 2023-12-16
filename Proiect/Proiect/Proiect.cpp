@@ -11,7 +11,7 @@
 #include <stb_image.h>
 #include"Shader.h"
 #include"Camera.h"
-
+#include"Floor.h"
 
 
 namespace fs = std::filesystem;
@@ -24,7 +24,7 @@ const unsigned int height = 800;
 #pragma comment(lib,"glfw3dll.lib")
 #pragma comment (lib,"OpenGl32.lib")
 
-
+unsigned int CreateTexture(const std::string& strTexturePath);
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
@@ -34,6 +34,10 @@ double crntTime = 0.0;
 double timeDiff = 0.5;
 // Keeps track of the amount of frames in timeDiff
 unsigned int counter = 0;
+
+
+
+
 //void processInput(GLFWwindow* window);
 float skyboxVertices[] =
 {
@@ -110,16 +114,19 @@ int main()
 	// Generates Shader objects
 
 	Shader skyboxShader("skyboxShader.vs", "skyboxShader.fs");
-
+	Shader floorShader("floor.vs", "floor.fs");
+	
 	// Take care of all the light related things
 	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
 
+	
 
 	skyboxShader.Use();
 	glUniform1i(glGetUniformLocation(skyboxShader.ID, "skybox"), 0);
 
-
+	floorShader.Use();
+	glUniform1i(glGetUniformLocation(floorShader.ID, "floorTexture"), 0);
 
 
 
@@ -133,21 +140,8 @@ int main()
 	// Uses counter clock-wise standard
 	glFrontFace(GL_CCW);
 
-	// Creates camera object
 
-	/*
-	* I'm doing this relative path thing in order to centralize all the resources into one folder and not
-	* duplicate them between tutorial folders. You can just copy paste the resources from the 'Resources'
-	* folder and then give a relative path from this folder to whatever resource you want to get to.
-	* Also note that this requires C++17, so go to Project Properties, C/C++, Language, and select C++17
-	*/
 	std::string parentDir = (fs::current_path().fs::path::parent_path()).string();
-
-
-
-
-
-
 
 
 	// Create VAO, VBO, and EBO for the skybox
@@ -166,6 +160,7 @@ int main()
 	glBindVertexArray(0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
+	unsigned int floorTexture = CreateTexture(parentDir + "\\Floor\\grass.jpg");
 
 	// All the faces of the cubemap (make sure they are in this exact order)
 	std::string facesCubemap[6] =
@@ -241,21 +236,23 @@ int main()
 			// Use this if you have disabled VSync
 			//camera.Inputs(window);
 		}
-
+		Floor floor;
 		// Specify the color of the background
 		glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
 		// Clean the back buffer and depth buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-		// Handles camera inputs (delete this if you have disabled VSync)
+		//renderFloor
+		glViewport(0, 0, width, height);
+		floorShader.Use();
+		floor.setUp(*camera, floorShader, floorTexture);
+		floor.renderScene(floorShader);
 
 		camera->Inputs(window);
 		processInput(window);
 		camera->updateMatrix(45.0f, 0.1f, 100.0f);
 
-		// Since the cubemap will always have a depth of 1.0, we need that equal sign so it doesn't get discarded
-		glDepthFunc(GL_LEQUAL);
 
+		glDepthFunc(GL_LEQUAL);
 		skyboxShader.Use();
 		glm::mat4 view = glm::mat4(1.0f);
 		glm::mat4 projection = glm::mat4(1.0f);
@@ -337,4 +334,40 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 void scroll_callback(GLFWwindow* window, double xoffset, double yOffset)
 {
 	camera->ProcessMouseScroll((float)yOffset);
+}
+unsigned int CreateTexture(const std::string& strTexturePath)
+{
+	unsigned int textureId = -1;
+
+	// load image, create texture and generate mipmaps
+	int width, height, nrChannels;
+	stbi_set_flip_vertically_on_load(true); // tell stb_image.h to flip loaded texture's on the y-axis.
+	unsigned char* data = stbi_load(strTexturePath.c_str(), &width, &height, &nrChannels, 0);
+	if (data) {
+		GLenum format;
+		if (nrChannels == 1)
+			format = GL_RED;
+		else if (nrChannels == 3)
+			format = GL_RGB;
+		else if (nrChannels == 4)
+			format = GL_RGBA;
+
+		glGenTextures(1, &textureId);
+		glBindTexture(GL_TEXTURE_2D, textureId);
+		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+
+		// set the texture wrapping parameters
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		// set texture filtering parameters
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	}
+	else {
+		std::cout << "Failed to load texture: " << strTexturePath << std::endl;
+	}
+	stbi_image_free(data);
+
+	return textureId;
 }
