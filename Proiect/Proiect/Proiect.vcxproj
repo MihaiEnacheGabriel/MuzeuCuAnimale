@@ -71,8 +71,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)\Link\glew210\include;$(SolutionDir)\Link\glfw\GLFW;$(SolutionDir)\Link\json\nlohmann;$(SolutionDir)\Link\stb\stb-master;$(SolutionDir)\Link\glm\glm;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Link\glew210\Win32;$(SolutionDir)\Link\glfw\lib-vc2019;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\Link\assimp\include;$(SolutionDir)\Link\glew210\include;$(SolutionDir)\Link\glfw\GLFW;$(SolutionDir)\Link\json\nlohmann;$(SolutionDir)\Link\stb\stb-master;$(SolutionDir)\Link\glm\glm;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\Link\assimp\Lib;$(SolutionDir)\Link\glew210\Win32;$(SolutionDir)\Link\glfw\lib-vc2019;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -134,12 +134,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="EBO.cpp" />
     <ClCompile Include="Floor.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="ModelLoader.cpp" />
     <ClCompile Include="Proiect.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="stb.cpp" />
+    <ClCompile Include="VAO.cpp" />
+    <ClCompile Include="VBO.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="firstObj.fs" />
+    <None Include="firstObj.vs" />
     <None Include="floor.fs" />
     <None Include="floor.vs" />
     <None Include="skyboxShader.fs" />
@@ -147,8 +154,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="EBO.h" />
     <ClInclude Include="Floor.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="ModelLoader.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="VAO.h" />
+    <ClInclude Include="VBO.h" />
+    <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

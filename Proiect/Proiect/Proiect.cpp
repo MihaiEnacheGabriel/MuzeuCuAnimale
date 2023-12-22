@@ -12,7 +12,7 @@
 #include"Shader.h"
 #include"Camera.h"
 #include"Floor.h"
-
+#include"ModelLoader.h"
 
 namespace fs = std::filesystem;
 
@@ -23,6 +23,7 @@ const unsigned int height = 800;
 #pragma comment (lib,"glew32.lib")
 #pragma comment(lib,"glfw3dll.lib")
 #pragma comment (lib,"OpenGl32.lib")
+#pragma comment (lib,"assimp.lib")
 
 unsigned int CreateTexture(const std::string& strTexturePath);
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -115,7 +116,9 @@ int main()
 
 	Shader skyboxShader("skyboxShader.vs", "skyboxShader.fs");
 	Shader floorShader("floor.vs", "floor.fs");
-	
+	Shader Cageshader("firstObj.vs", "firstObj.fs");
+	Shader Horseshader("firstObj.vs", "firstObj.fs");
+	Shader ParrotShader("firstObj.vs", "firstObj.fs");
 	// Take care of all the light related things
 	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
@@ -127,7 +130,7 @@ int main()
 
 	floorShader.Use();
 	glUniform1i(glGetUniformLocation(floorShader.ID, "floorTexture"), 0);
-
+	
 
 
 	// Enables the Depth Buffer
@@ -142,8 +145,12 @@ int main()
 
 
 	std::string parentDir = (fs::current_path().fs::path::parent_path()).string();
-
-
+	std::string cageObjFileName = (parentDir + "\\OBJ\\OBJ\\Kennel_Dog_Corona.obj");
+	std::string horseObjFileName = (parentDir + "\\OBJ\\Horse\\Horse.obj");
+	std::string parrotObjFileName = (parentDir + "\\OBJ\\Parrot\\10032_Parrot_V1_L3.obj");
+	Model Cage(cageObjFileName, false);
+	Model Horse(horseObjFileName, false);
+	Model Parrot(parrotObjFileName, false);
 	// Create VAO, VBO, and EBO for the skybox
 	unsigned int skyboxVAO, skyboxVBO, skyboxEBO;
 	glGenVertexArrays(1, &skyboxVAO);
@@ -236,6 +243,9 @@ int main()
 			// Use this if you have disabled VSync
 			//camera.Inputs(window);
 		}
+		// Specify the color of the background
+
+
 		Floor floor;
 		// Specify the color of the background
 		glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
@@ -251,6 +261,45 @@ int main()
 		processInput(window);
 		camera->updateMatrix(45.0f, 0.1f, 100.0f);
 
+		glViewport(0, 0, width, height);
+		Horseshader.Use();
+		glm::mat4 horsemodel = glm::mat4(1.0);
+		horsemodel = glm::translate(horsemodel, glm::vec3(-0.0f, -7.7f, 20.0f));
+		horsemodel = glm::scale(horsemodel, glm::vec3(5.0f, 5.0f, 5.0f));
+		Horseshader.SetMat4("model", horsemodel);
+		glm::mat4 projectionHorse = camera->GetProjectionMatrix();
+		glm::mat4 viewHorse = camera->GetViewMatrix();
+		Horseshader.SetMat4("projection", projectionHorse);
+		Horseshader.SetMat4("view", viewHorse);
+		Horseshader.SetVec3("viewPos", camera->GetPosition());
+		Horse.Draw(Horseshader); 
+
+		glViewport(0, 0, width, height);
+		Cageshader.Use();
+		glm::mat4 cagemodel = glm::mat4(1.0);
+		cagemodel = glm::translate(cagemodel, glm::vec3(-30.0f, -7.7f, 0.0f));
+		cagemodel = glm::scale(cagemodel, glm::vec3(0.1f, 0.1f, 0.1f));
+		Cageshader.SetMat4("model", cagemodel);
+		glm::mat4 projectionCage = camera->GetProjectionMatrix();
+		glm::mat4 viewCage = camera->GetViewMatrix();
+		Cageshader.SetMat4("projection", projectionCage);
+		Cageshader.SetMat4("view", viewCage);
+		Cageshader.SetVec3("viewPos", camera->GetPosition());
+		Cage.Draw(Cageshader); 
+
+		glViewport(0, 0, width, height);
+		ParrotShader.Use();
+		glm::mat4 Parrotmodel = glm::mat4(1.0);
+		Parrotmodel = glm::translate(Parrotmodel, glm::vec3(-30.0f, 2.7f, 0.0f));
+		Parrotmodel = glm::scale(Parrotmodel, glm::vec3(0.1f, 0.1f, 0.1f));
+		Parrotmodel = glm::rotate(Parrotmodel,glm::radians(-90.0f),glm::vec3(0.1f, 0.1f, 0.1f));
+		ParrotShader.SetMat4("model", Parrotmodel);
+		glm::mat4 projectionParrot = camera->GetProjectionMatrix();
+		glm::mat4 viewParrot = camera->GetViewMatrix();
+		ParrotShader.SetMat4("projection", projectionParrot);
+		ParrotShader.SetMat4("view", viewParrot);
+		ParrotShader.SetVec3("viewPos", camera->GetPosition());
+		Parrot.Draw(ParrotShader);
 
 		glDepthFunc(GL_LEQUAL);
 		skyboxShader.Use();
