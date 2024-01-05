@@ -1,0 +1,13 @@
+# Blender 4.0.2 MTL File: 'Rock_9.blend'
+# www.blender.org
+
+newmtl Rock_9
+Ka 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Rock_9_Tex/Rock_9_Base_Color.jpg
+map_Ks Rock_9_Tex/Rock_9_Specular.jpg
+map_Ns Rock_9_Tex/Rock_9_Glossiness.jpg
+map_Bump -bm 1.000000 Rock_9_Tex/Rock_9_Normal.jpg

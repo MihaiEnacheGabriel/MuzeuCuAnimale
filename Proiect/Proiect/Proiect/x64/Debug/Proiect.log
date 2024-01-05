@@ -1,0 +1,25 @@
+﻿  Camera.cpp
+E:\MuzeuCuAnimale\Proiect\Proiect\Camera.h(6,10): fatal  error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  EBO.cpp
+E:\MuzeuCuAnimale\Proiect\Proiect\EBO.h(4,10): fatal  error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Floor.cpp
+E:\MuzeuCuAnimale\Proiect\Proiect\Shader.h(9,10): fatal  error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Mesh.cpp
+E:\MuzeuCuAnimale\Proiect\Proiect\Mesh.h(2,10): fatal  error C1083: Cannot open include file: 'GLM.hpp': No such file or directory
+  ModelLoader.cpp
+E:\MuzeuCuAnimale\Proiect\Proiect\Mesh.h(2,10): fatal  error C1083: Cannot open include file: 'GLM.hpp': No such file or directory
+  ObjRenderer.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\filesystem(13): warning STL4038: The contents of <filesystem> are available only with C++17 or later.
+E:\MuzeuCuAnimale\Proiect\Proiect\ObjRenderer.h(6,10): fatal  error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Proiect.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\filesystem(13): warning STL4038: The contents of <filesystem> are available only with C++17 or later.
+E:\MuzeuCuAnimale\Proiect\Proiect\Proiect.cpp(5,10): fatal  error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Shader.cpp
+E:\MuzeuCuAnimale\Proiect\Proiect\Shader.h(9,10): fatal  error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  stb.cpp
+E:\MuzeuCuAnimale\Proiect\Proiect\stb.cpp(2,9): fatal  error C1083: Cannot open include file: 'stb_image.h': No such file or directory
+  VAO.cpp
+E:\MuzeuCuAnimale\Proiect\Proiect\VAO.h(4,10): fatal  error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  VBO.cpp
+E:\MuzeuCuAnimale\Proiect\Proiect\VBO.h(4,10): fatal  error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Generating Code...

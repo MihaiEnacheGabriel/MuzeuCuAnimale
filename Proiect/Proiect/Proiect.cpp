@@ -120,6 +120,7 @@ int main()
 	Shader Horseshader("firstObj.vs", "firstObj.fs");
 	Shader ParrotShader("firstObj.vs", "firstObj.fs");
 	Shader FenceShader("firstObj.vs", "firstObj.fs");
+	Shader MountainShader("firstObj.vs", "firstObj.fs");
 	// Take care of all the light related things
 	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
@@ -150,10 +151,12 @@ int main()
 	std::string horseObjFileName = (parentDir + "\\OBJ\\Horse\\Horse.obj");
 	std::string parrotObjFileName = (parentDir + "\\OBJ\\Parrot\\10032_Parrot_V1_L3.obj");
 	std::string fenceObjFileName = (parentDir + "\\OBJ\\Fence\\fence.obj");
+	std::string mountainObjFileName = (parentDir + "\\OBJ\\Rock_9\\Rock_9\\Rock_9.obj");
 	Model Cage(cageObjFileName, false);
 	Model Horse(horseObjFileName, false);
 	Model Parrot(parrotObjFileName, false);
 	Model Fence(fenceObjFileName, false);
+	Model Mountain(mountainObjFileName, false);
 	// Create VAO, VBO, and EBO for the skybox
 	unsigned int skyboxVAO, skyboxVBO, skyboxEBO;
 	glGenVertexArrays(1, &skyboxVAO);
@@ -277,7 +280,22 @@ int main()
 		render.Renderer(ParrotShader, *camera, Parrot, glm::vec3(-30.0f, 2.7f, 0.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.1f, 0.1f, 0.1f), -90.0f);
 
 		glViewport(0, 0, width, height);
-		render.Renderer(FenceShader, *camera, Fence, glm::vec3(-70.0f, 2.7f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f), 0.0f);
+		render.Renderer(FenceShader, *camera, Fence, glm::vec3(-70.0f, 2.7f, 0.0f), glm::vec3(10.0f, 10.0f, 10.0f), glm::vec3(1.0f, 1.0f, 1.0f), 0.0f);
+
+		float radius = 5000.0f;
+		float angle = 90.0f;
+		int num_segments = 200; // Increase this for a smoother circle
+		for (int i = 0; i < num_segments; i++) {
+			float theta = 2.0f * 3.1415926f * float(i) / float(num_segments);
+			float x = radius * cosf(theta);
+			float z = radius * sinf(theta);
+			glViewport(0, 0, width, height);
+			if (angle == 90.0f)
+				angle = 180.0f;
+			else
+				angle = 90.0f;
+			render.Renderer(MountainShader, *camera, Mountain, glm::vec3(x, 2.7f, z), glm::vec3(100.0f, 100.0f, 100.0f), glm::vec3(1.0f, 1.0f, 1.0f), 90.0f);
+		}
 
 		glDepthFunc(GL_LEQUAL);
 		skyboxShader.Use();

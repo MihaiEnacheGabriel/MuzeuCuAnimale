@@ -27,7 +27,7 @@ class Camera
 private:
 	// Default camera values
 	const float zNEAR = 0.1f;
-	const float zFAR = 5000.f;
+	const float zFAR = 50000.f;
 	const float YAW = -90.0f;
 	const float PITCH = 0.0f;
 	const float FOV = 45.0f;
