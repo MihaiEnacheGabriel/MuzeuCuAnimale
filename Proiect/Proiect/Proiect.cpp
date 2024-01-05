@@ -119,6 +119,7 @@ int main()
 	Shader Cageshader("firstObj.vs", "firstObj.fs");
 	Shader Horseshader("firstObj.vs", "firstObj.fs");
 	Shader ParrotShader("firstObj.vs", "firstObj.fs");
+	Shader FenceShader("firstObj.vs", "firstObj.fs");
 	// Take care of all the light related things
 	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
@@ -148,9 +149,11 @@ int main()
 	std::string cageObjFileName = (parentDir + "\\OBJ\\OBJ\\Kennel_Dog_Corona.obj");
 	std::string horseObjFileName = (parentDir + "\\OBJ\\Horse\\Horse.obj");
 	std::string parrotObjFileName = (parentDir + "\\OBJ\\Parrot\\10032_Parrot_V1_L3.obj");
+	std::string fenceObjFileName = (parentDir + "\\OBJ\\Fence\\fence.obj");
 	Model Cage(cageObjFileName, false);
 	Model Horse(horseObjFileName, false);
 	Model Parrot(parrotObjFileName, false);
+	Model Fence(fenceObjFileName, false);
 	// Create VAO, VBO, and EBO for the skybox
 	unsigned int skyboxVAO, skyboxVBO, skyboxEBO;
 	glGenVertexArrays(1, &skyboxVAO);
@@ -273,7 +276,8 @@ int main()
 		glViewport(0, 0, width, height);
 		render.Renderer(ParrotShader, *camera, Parrot, glm::vec3(-30.0f, 2.7f, 0.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.1f, 0.1f, 0.1f), -90.0f);
 
-		
+		glViewport(0, 0, width, height);
+		render.Renderer(FenceShader, *camera, Fence, glm::vec3(-70.0f, 2.7f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f), 0.0f);
 
 		glDepthFunc(GL_LEQUAL);
 		skyboxShader.Use();
