@@ -122,6 +122,7 @@ int main()
 	Shader FenceShader("firstObj.vs", "firstObj.fs");
 	Shader MountainShader("firstObj.vs", "firstObj.fs");
 	Shader IguanaShader("firstObj.vs", "firstObj.fs");
+	Shader WallShader("firstObj.vs", "firstObj.fs");
 	// Take care of all the light related things
 	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
@@ -160,6 +161,10 @@ int main()
 	Model Fence(fenceObjFileName, false);
 	Model Mountain(mountainObjFileName, false);
 	Model Iguana(IguanaObjFileName, false);
+
+
+	std::string WallObjFileName = (parentDir + "\\OBJ\\Wall\\BrickWall.obj");
+	Model Wall(WallObjFileName, false);
 	// Create VAO, VBO, and EBO for the skybox
 	unsigned int skyboxVAO, skyboxVBO, skyboxEBO;
 	glGenVertexArrays(1, &skyboxVAO);
@@ -328,9 +333,34 @@ int main()
 				render.Renderer(FenceShader, *camera, Fence, glm::vec3(-50.0f + offsetX, -7.7f, i * 30.0f + offsetZ), glm::vec3(15.0f, 15.0f, 15.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
 			}
 		}
-
-
-
+		int z = 550;
+		for(int i=0;i<21;i++)
+		{
+			glViewport(0, 0, width, height);
+			render.Renderer(WallShader, *camera, Wall, glm::vec3(-800.0f, -6.0f, z), glm::vec3(23.0f, 23.0f, 23.0f), glm::vec3(1.0f, 1.0f, 1.0f), 0.0f);
+			z -= 50;
+		}
+		 z = 550;
+		for (int i = 0; i < 21; i++)
+		{
+			glViewport(0, 0, width, height);
+			render.Renderer(WallShader, *camera, Wall, glm::vec3(500.0f, -6.0f, z), glm::vec3(23.0f, 23.0f, 23.0f), glm::vec3(1.0f, 1.0f, 1.0f), 0.0f);
+			z -= 50;
+		}
+		int x = 470;
+		for (int i = 0; i < 26; i++)
+		{
+			glViewport(0, 0, width, height);
+			render.Renderer(WallShader, *camera, Wall, glm::vec3(x, -6.0f,585.0f), glm::vec3(23.0f, 23.0f, 23.0f), glm::vec3(0.0f, 1.0f, 0.0f), 90.0f);
+			x -= 50;
+		}
+		x = 485;
+		for (int i = 0; i < 26; i++)
+		{
+			glViewport(0, 0, width, height);
+			render.Renderer(WallShader, *camera, Wall, glm::vec3(x, -6.0f, -480.0f), glm::vec3(23.0f, 23.0f, 23.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+			x -= 50;
+		}
 		float radius = 5000.0f;
 		float angle = 90.0f;
 		int num_segments = 200; // Increase this for a smoother circle
