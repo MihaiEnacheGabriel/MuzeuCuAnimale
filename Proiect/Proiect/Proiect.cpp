@@ -136,6 +136,7 @@ int main()
 	Shader TapirShader("firstObj.vs", "firstObj.fs");
 	Shader RockShader("firstObj.vs", "firstObj.fs");
 	Shader PalmShader("firstObj.vs", "firstObj.fs");
+	Shader Tree2Shader("firstObj.vs", "firstObj.fs");
 	// Take care of all the light related things
 	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
@@ -181,6 +182,7 @@ int main()
 	std::string tapirObjFileName = (parentDir + "\\OBJ\\Tapir\\tapir.obj");
 	std::string rockObjFileName = (parentDir + "\\OBJ\\Stone\\Objbun.obj");
 	std::string PalmObjFileName = (parentDir + "\\OBJ\\Palm_01\\Palm_01.obj");
+	std::string Tree2ObjFileName = (parentDir + "\\OBJ\\Tree2\\Tree.obj");
 	Model Cage(cageObjFileName, false);
 	Model Horse(horseObjFileName, false);
 	Model Parrot(parrotObjFileName, false);
@@ -203,6 +205,7 @@ int main()
 	Model Wall(WallObjFileName, false);
 	Model Rock(rockObjFileName, false);
 	Model Palm(PalmObjFileName, false);
+	Model Tree2(Tree2ObjFileName, false);
 
 	////////////////////////////////////////////////////////////////////////////////
 
@@ -586,12 +589,17 @@ int main()
 		glViewport(0, 0, width, height);
 		render.Renderer(TreeShader, *camera, Tree, glm::vec3(520.0f, -2.0f, -200.0f), glm::vec3(45.0f, 45.0f, 45.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(TreeShader, *camera, Tree, glm::vec3(320.0f, -2.0f, -400.0f), glm::vec3(45.0f, 45.0f, 45.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
+		render.Renderer(Tree2Shader, *camera, Tree2, glm::vec3(320.0f, -2.0f, -400.0f), glm::vec3(28.0f, 32.0f, 30.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(TreeShader, *camera, Tree, glm::vec3(-520.0f, -2.0f, -200.0f), glm::vec3(45.0f, 45.0f, 45.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
+		render.Renderer(Tree2Shader, *camera, Tree2, glm::vec3(-520.0f, -2.0f, -200.0f), glm::vec3(34.0f, 34.0f, 34.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
 		glViewport(0, 0, width, height);
 		render.Renderer(TreeShader, *camera, Tree, glm::vec3(420.0f, -2.0f, 400.0f), glm::vec3(45.0f, 45.0f, 45.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
-
+		glViewport(0, 0, width, height);
+		render.Renderer(Tree2Shader, *camera, Tree2, glm::vec3(380.0f, -2.0f, -350.0f), glm::vec3(30.0f, 30.0f, 30.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
+		//glViewport(0, 0, width, height);
+		//render.Renderer(Tree2Shader, *camera, Tree2, glm::vec3(-520.0f, -2.0f, -200.0f), glm::vec3(24.0f, 25.0f, 24.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(TreeShader, *camera, Tree, glm::vec3(420.0f, -2.0f, 400.0f), glm::vec3(30.0f, 31.0f, 30.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
 
 		glViewport(0, 0, width, height);
 		render.Renderer(PalmShader, *camera, Palm, glm::vec3(6.0f, -7.0f, 6.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
@@ -632,7 +640,8 @@ int main()
 		glViewport(0, 0, width, height);
 		render.Renderer(PalmShader, *camera, Palm, glm::vec3(-194.0f, -7.0f, -306.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(PalmShader, *camera, Palm, glm::vec3(-506.0f, -7.0f, -194.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
+		render.Renderer(PalmShader, *camera, Palm, glm::vec3(-250.0f, -7.0f, -140.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
+
 
 		glDepthFunc(GL_LEQUAL);
 		skyboxShader.Use();
