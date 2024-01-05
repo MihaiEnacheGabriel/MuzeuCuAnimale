@@ -1,2 +1,14 @@
-﻿  Proiect.cpp
-  Proiect.vcxproj -> E:\MuzeuCuAnimale\Proiect\Debug\Proiect.exe
+﻿  Camera.cpp
+  EBO.cpp
+  Floor.cpp
+  Mesh.cpp
+  ModelLoader.cpp
+  ObjRenderer.cpp
+  Proiect.cpp
+  Shader.cpp
+D:\MuzeuCuAnimale2\Proiect\Proiect\Shader.cpp(106,27): warning C4244: 'argument': conversion from 'std::streamoff' to 'const unsigned int', possible loss of data
+  stb.cpp
+  VAO.cpp
+  VBO.cpp
+  Generating Code...
+  Proiect.vcxproj -> D:\MuzeuCuAnimale2\Proiect\Debug\Proiect.exe

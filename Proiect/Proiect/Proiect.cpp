@@ -134,6 +134,7 @@ int main()
 	Shader DeerShader("firstObj.vs", "firstObj.fs");
 	Shader HorseShader("firstObj.vs", "firstObj.fs");
 	Shader TapirShader("firstObj.vs", "firstObj.fs");
+	Shader RockShader("firstObj.vs", "firstObj.fs");
 	// Take care of all the light related things
 	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
@@ -177,6 +178,8 @@ int main()
 	std::string deerObjFileName = (parentDir + "\\OBJ\\Deer\\Deer.obj");
 	std::string horseObjFileName = (parentDir + "\\OBJ\\Horse2\\horse.obj");
 	std::string tapirObjFileName = (parentDir + "\\OBJ\\Tapir\\tapir.obj");
+	std::string rockObjFileName = (parentDir + "\\OBJ\\Stone\\Objbun.obj");
+
 	Model Cage(cageObjFileName, false);
 	Model Horse(horseObjFileName, false);
 	Model Parrot(parrotObjFileName, false);
@@ -197,6 +200,7 @@ int main()
 	Model Tapir(tapirObjFileName, false);
 	std::string WallObjFileName = (parentDir + "\\OBJ\\Wall\\BrickWall.obj");
 	Model Wall(WallObjFileName, false);
+	Model Rock(rockObjFileName, false);
 
 
 	////////////////////////////////////////////////////////////////////////////////
@@ -400,17 +404,46 @@ int main()
 		render.Renderer1(BearShader, *camera, Bear, glm::vec3(200.0f, -7.7f, 350.0f), glm::vec3(0.30f, 0.30f, 0.30f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), 250.0f);
 
 		glViewport(0, 0, width, height);
+		render.Renderer1(RockShader, *camera, Rock, glm::vec3(30.0f, -7.7f, -62.0f), glm::vec3(32.30f, 0.30f, 9.30f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(1.0f, 0.0f, 0.0f), 7.0f);
+
+		glViewport(0, 0, width, height);
+		render.Renderer1(RockShader, *camera, Rock, glm::vec3(-275.0f, -7.5f, 60.0f), glm::vec3(9.30f, 0.30f, 22.30f), glm::vec3(1.0f, 0.0f, 0.0f), 1.0f, glm::vec3(1.0f, 0.0f, 0.0f), 1.0f);
+
+		glViewport(0, 0, width, height);
+		render.Renderer1(RockShader, *camera, Rock, glm::vec3(-275.0f, -7.5f, -95.0f), glm::vec3(45.30f, 0.30f, 12.30f), glm::vec3(1.0f, 0.0f, 0.0f), 1.0f, glm::vec3(1.0f, 0.0f, 0.0f), 1.0f);
+
+		glViewport(0, 0, width, height);
+		render.Renderer1(RockShader, *camera, Rock, glm::vec3(-85.0f, -7.5f, 197.0f), glm::vec3(8.30f, 0.30f, 18.30f), glm::vec3(1.0f, 0.0f, 0.0f), 1.0f, glm::vec3(1.0f, 0.0f, 0.0f), 1.0f);
+
+		glViewport(0, 0, width, height);
+		render.Renderer1(RockShader, *camera, Rock, glm::vec3(-180.0f, -7.7f, -62.0f), glm::vec3(32.30f, 0.30f, 9.30f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(1.0f, 0.0f, 0.0f), 7.0f);
+
+		glViewport(0, 0, width, height);
+		render.Renderer1(RockShader, *camera, Rock, glm::vec3(25.0f, -7.7f, 235.0f), glm::vec3(32.30f, 0.30f, 9.30f), glm::vec3(0.0f, 0.0f, 1.0f), 7.0f, glm::vec3(1.0f, 0.0f, 0.0f), 90.0f);
+
+		glViewport(0, 0, width, height);
+		render.Renderer1(RockShader, *camera, Rock, glm::vec3(-390.0f, -7.7f, -62.0f), glm::vec3(32.30f, 0.30f, 9.30f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(1.0f, 0.0f, 0.0f), 7.0f);
+
+		glViewport(0, 0, width, height);
+		render.Renderer1(RockShader, *camera, Rock, glm::vec3(-600.0f, -7.7f, -62.0f), glm::vec3(32.30f, 0.30f, 9.30f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(1.0f, 0.0f, 0.0f), 7.0f);
+
+		glViewport(0, 0, width, height);
 		render.Renderer1(TapirShader, *camera, Tapir, glm::vec3(-580.0f, -7.7f, -150.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), 35.0f);
 		glViewport(0, 0, width, height);
 		render.Renderer1(TapirShader, *camera, Tapir, glm::vec3(-600.0f, -7.7f, -130.0f), glm::vec3(0.23f, 0.23f, 0.23f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), 100.0f);
 		glViewport(0, 0, width, height);
 		render.Renderer1(TapirShader, *camera, Tapir, glm::vec3(-620.0f, -7.7f, -155.0f), glm::vec3(0.18f, 0.18f, 0.18f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), 150.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer1(TapirShader, *camera, Tapir, glm::vec3(-580.0f, -7.7f, -135.0f), glm::vec3(0.15f, 0.15f, 0.15f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f),200.0f);
+		render.Renderer1(TapirShader, *camera, Tapir, glm::vec3(-580.0f, -7.7f, -135.0f), glm::vec3(0.15f, 0.15f, 0.15f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), 200.0f);
 		glViewport(0, 0, width, height);
 		render.Renderer1(TapirShader, *camera, Tapir, glm::vec3(-615.0f, -7.7f, -140.0f), glm::vec3(0.25f, 0.25f, 0.25f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), -35.0f);
 
 		//animal fences
+
+		glViewport(0, 0, width, height);
+		render.Renderer1(RockShader, *camera, Rock, glm::vec3(-180.0f, -7.7f, 145.0f), glm::vec3(32.30f, 0.30f, 9.30f), glm::vec3(0.0f, 0.0f, 1.0f), 7.0f, glm::vec3(1.0f, 0.0f, 0.0f), 90.0f);
+
+
 
 		glViewport(0, 0, width, height);
 

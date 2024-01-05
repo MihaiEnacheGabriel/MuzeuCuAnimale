@@ -1,1 +1,41 @@
-﻿  Proiect.vcxproj -> E:\MuzeuCuAnimale\Proiect\Debug\Proiect.exe
+﻿  Camera.cpp
+  EBO.cpp
+  Floor.cpp
+D:\MuzeuCuAnimale2\Proiect\Proiect\Proiect\Camera.h(6,10): error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  (compiling source file 'Camera.cpp')
+  
+D:\MuzeuCuAnimale2\Proiect\Proiect\Proiect\EBO.h(4,10): error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  (compiling source file 'EBO.cpp')
+  
+D:\MuzeuCuAnimale2\Proiect\Proiect\Proiect\Shader.h(9,10): error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  (compiling source file 'Floor.cpp')
+  
+  Mesh.cpp
+D:\MuzeuCuAnimale2\Proiect\Proiect\Proiect\Mesh.h(2,10): error C1083: Cannot open include file: 'GLM.hpp': No such file or directory
+  (compiling source file 'Mesh.cpp')
+  
+  ModelLoader.cpp
+D:\MuzeuCuAnimale2\Proiect\Proiect\Proiect\Mesh.h(2,10): error C1083: Cannot open include file: 'GLM.hpp': No such file or directory
+  (compiling source file 'ModelLoader.cpp')
+  
+  ObjRenderer.cpp
+D:\MuzeuCuAnimale2\Proiect\Proiect\Proiect\ObjRenderer.h(6,10): error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  (compiling source file 'ObjRenderer.cpp')
+  
+  Proiect.cpp
+D:\MuzeuCuAnimale2\Proiect\Proiect\Proiect\Proiect.cpp(5,10): error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Shader.cpp
+D:\MuzeuCuAnimale2\Proiect\Proiect\Proiect\Shader.h(9,10): error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  (compiling source file 'Shader.cpp')
+  
+  stb.cpp
+D:\MuzeuCuAnimale2\Proiect\Proiect\Proiect\stb.cpp(2,9): error C1083: Cannot open include file: 'stb_image.h': No such file or directory
+  VAO.cpp
+D:\MuzeuCuAnimale2\Proiect\Proiect\Proiect\VAO.h(4,10): error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  (compiling source file 'VAO.cpp')
+  
+  VBO.cpp
+D:\MuzeuCuAnimale2\Proiect\Proiect\Proiect\VBO.h(4,10): error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  (compiling source file 'VBO.cpp')
+  
+  Generating Code...
