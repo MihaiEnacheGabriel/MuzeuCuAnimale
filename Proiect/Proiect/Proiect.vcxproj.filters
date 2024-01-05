@@ -45,6 +45,9 @@
     <ClCompile Include="VBO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ObjRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="skyboxShader.vs">
@@ -96,6 +99,9 @@
     </ClInclude>
     <ClInclude Include="Vertex.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjRenderer.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

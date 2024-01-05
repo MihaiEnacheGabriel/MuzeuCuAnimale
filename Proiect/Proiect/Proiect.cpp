@@ -13,7 +13,7 @@
 #include"Camera.h"
 #include"Floor.h"
 #include"ModelLoader.h"
-
+#include"ObjRenderer.h"
 namespace fs = std::filesystem;
 
 const unsigned int width = 800;
@@ -262,44 +262,18 @@ int main()
 		camera->updateMatrix(45.0f, 0.1f, 100.0f);
 
 		glViewport(0, 0, width, height);
-		Horseshader.Use();
-		glm::mat4 horsemodel = glm::mat4(1.0);
-		horsemodel = glm::translate(horsemodel, glm::vec3(-0.0f, -7.7f, 20.0f));
-		horsemodel = glm::scale(horsemodel, glm::vec3(5.0f, 5.0f, 5.0f));
-		Horseshader.SetMat4("model", horsemodel);
-		glm::mat4 projectionHorse = camera->GetProjectionMatrix();
-		glm::mat4 viewHorse = camera->GetViewMatrix();
-		Horseshader.SetMat4("projection", projectionHorse);
-		Horseshader.SetMat4("view", viewHorse);
-		Horseshader.SetVec3("viewPos", camera->GetPosition());
-		Horse.Draw(Horseshader); 
+		ObjRenderer render;
+		render.Renderer(Horseshader, *camera, Horse, glm::vec3(-0.0f, -7.7f, 20.0f), glm::vec3(5.0f, 5.0f, 5.0f), glm::vec3(1.0f, 1.0f, 1.0f), 0.0f);
+		
 
 		glViewport(0, 0, width, height);
-		Cageshader.Use();
-		glm::mat4 cagemodel = glm::mat4(1.0);
-		cagemodel = glm::translate(cagemodel, glm::vec3(-30.0f, -7.7f, 0.0f));
-		cagemodel = glm::scale(cagemodel, glm::vec3(0.1f, 0.1f, 0.1f));
-		Cageshader.SetMat4("model", cagemodel);
-		glm::mat4 projectionCage = camera->GetProjectionMatrix();
-		glm::mat4 viewCage = camera->GetViewMatrix();
-		Cageshader.SetMat4("projection", projectionCage);
-		Cageshader.SetMat4("view", viewCage);
-		Cageshader.SetVec3("viewPos", camera->GetPosition());
-		Cage.Draw(Cageshader); 
+		render.Renderer(Cageshader, *camera, Cage,glm::vec3(-30.0f, -7.7f, 0.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(1.0f, 1.0f, 1.0f), 0.0f);
+		
 
 		glViewport(0, 0, width, height);
-		ParrotShader.Use();
-		glm::mat4 Parrotmodel = glm::mat4(1.0);
-		Parrotmodel = glm::translate(Parrotmodel, glm::vec3(-30.0f, 2.7f, 0.0f));
-		Parrotmodel = glm::scale(Parrotmodel, glm::vec3(0.1f, 0.1f, 0.1f));
-		Parrotmodel = glm::rotate(Parrotmodel,glm::radians(-90.0f),glm::vec3(0.1f, 0.1f, 0.1f));
-		ParrotShader.SetMat4("model", Parrotmodel);
-		glm::mat4 projectionParrot = camera->GetProjectionMatrix();
-		glm::mat4 viewParrot = camera->GetViewMatrix();
-		ParrotShader.SetMat4("projection", projectionParrot);
-		ParrotShader.SetMat4("view", viewParrot);
-		ParrotShader.SetVec3("viewPos", camera->GetPosition());
-		Parrot.Draw(ParrotShader);
+		render.Renderer(ParrotShader, *camera, Parrot, glm::vec3(-30.0f, 2.7f, 0.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.1f, 0.1f, 0.1f), -90.0f);
+
+		
 
 		glDepthFunc(GL_LEQUAL);
 		skyboxShader.Use();

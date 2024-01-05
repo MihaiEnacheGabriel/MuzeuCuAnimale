@@ -8,13 +8,13 @@ void Floor::renderFloor()
 		// set up vertex data (and buffer(s)) and configure vertex attributes
 		float planeVertices[] = {
 			// positions            // normals         // texcoords
-			1000.0f, -7.5f,  1000.0f,  0.0f, 1.0f, 0.0f,  25.0f,  0.0f,
-			-1000.0f, -7.5f,  1000.0f,  0.0f, 1.0f, 0.0f,   0.0f,  0.0f,
-			-1000.0f, -7.5f, -1000.0f,  0.0f, 1.0f, 0.0f,   0.0f, 25.0f,
+			10000.0f, -7.5f,  10000.0f,  0.0f, 1.0f, 0.0f,  250.0f,  0.0f,
+			-10000.0f, -7.5f,  10000.0f,  0.0f, 1.0f, 0.0f,   0.0f,  0.0f,
+			-1000.0f, -7.5f, -10000.0f,  0.0f, 1.0f, 0.0f,   0.0f, 250.0f,
 
-			1000.0f, -7.5f,  1000.0f,  0.0f, 1.0f, 0.0f,  25.0f,  0.0f,
-			-1000.0f, -7.5f, -1000.0f,  0.0f, 1.0f, 0.0f,   0.0f, 25.0f,
-			1000.0f, -7.5f, -1000.0f,  0.0f, 1.0f, 0.0f,  25.0f, 25.0f
+			10000.0f, -7.5f,  10000.0f,  0.0f, 1.0f, 0.0f,  250.0f,  0.0f,
+			-10000.0f, -7.5f, -10000.0f,  0.0f, 1.0f, 0.0f,   0.0f, 250.0f,
+			10000.0f, -7.5f, -10000.0f,  0.0f, 1.0f, 0.0f,  250.0f, 250.0f
 		};
 		// plane VAO
 		glGenVertexArrays(1, &floorVAO);
