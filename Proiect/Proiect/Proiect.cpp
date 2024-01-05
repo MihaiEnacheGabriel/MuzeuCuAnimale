@@ -131,6 +131,7 @@ int main()
 	Shader BearShader("firstObj.vs", "firstObj.fs");
 	Shader HumanShader("firstObj.vs", "firstObj.fs");
 	Shader TreeShader("firstObj.vs", "firstObj.fs");
+	Shader FoxShader("firstObj.vs", "firstObj.fs");
 	// Take care of all the light related things
 	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
@@ -171,6 +172,7 @@ int main()
 	std::string caimanObjFileName = (parentDir + "\\OBJ\\Caiman\\caiman.obj");
 	std::string HumanObjFileName = (parentDir + "\\OBJ\\Human\\Human\\ObjFbx\\Human.obj");
 	std::string TreeObjFileName = (parentDir + "\\OBJ\\Tree\\Tree\\Tree.obj");
+	std::string foxObjFileName = (parentDir + "\\OBJ\\Fox\\fox.obj");
 	Model Cage(cageObjFileName, false);
 	Model Horse(horseObjFileName, false);
 	Model Parrot(parrotObjFileName, false);
@@ -185,6 +187,7 @@ int main()
 	Model Caiman(caimanObjFileName, false);
 	Model Human(HumanObjFileName, false);
 	Model Tree(TreeObjFileName, false);
+	Model Fox(foxObjFileName, false);
 	std::string WallObjFileName = (parentDir + "\\OBJ\\Wall\\BrickWall.obj");
 	Model Wall(WallObjFileName, false);
 	// Create VAO, VBO, and EBO for the skybox
@@ -345,6 +348,8 @@ int main()
 		glViewport(0, 0, width, height);
 		render.Renderer1(CaimanShader, *camera, Caiman, glm::vec3(-140.0f, -7.7f, 320.0f), glm::vec3(0.20f, 0.20f, 0.20f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), 75.0f);
 
+		glViewport(0, 0, width, height);
+		render.Renderer1(FoxShader, *camera, Fox, glm::vec3(-100.0f, -7.7f, -230.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), -30.0f);
 
 		glViewport(0, 0, width, height);
 		render.Renderer1(BearShader, *camera, Bear, glm::vec3(200.0f, -7.7f, 350.0f), glm::vec3(0.30f, 0.30f, 0.30f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), 250.0f);
