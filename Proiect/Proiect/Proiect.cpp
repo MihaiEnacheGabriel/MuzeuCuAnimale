@@ -135,6 +135,7 @@ int main()
 	Shader HorseShader("firstObj.vs", "firstObj.fs");
 	Shader TapirShader("firstObj.vs", "firstObj.fs");
 	Shader RockShader("firstObj.vs", "firstObj.fs");
+	Shader PalmShader("firstObj.vs", "firstObj.fs");
 	// Take care of all the light related things
 	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
@@ -179,7 +180,7 @@ int main()
 	std::string horseObjFileName = (parentDir + "\\OBJ\\Horse2\\horse.obj");
 	std::string tapirObjFileName = (parentDir + "\\OBJ\\Tapir\\tapir.obj");
 	std::string rockObjFileName = (parentDir + "\\OBJ\\Stone\\Objbun.obj");
-
+	std::string PalmObjFileName = (parentDir + "\\OBJ\\Palm_01\\Palm_01.obj");
 	Model Cage(cageObjFileName, false);
 	Model Horse(horseObjFileName, false);
 	Model Parrot(parrotObjFileName, false);
@@ -201,7 +202,7 @@ int main()
 	std::string WallObjFileName = (parentDir + "\\OBJ\\Wall\\BrickWall.obj");
 	Model Wall(WallObjFileName, false);
 	Model Rock(rockObjFileName, false);
-
+	Model Palm(PalmObjFileName, false);
 
 	////////////////////////////////////////////////////////////////////////////////
 
@@ -404,28 +405,28 @@ int main()
 		render.Renderer1(BearShader, *camera, Bear, glm::vec3(200.0f, -7.7f, 350.0f), glm::vec3(0.30f, 0.30f, 0.30f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), 250.0f);
 
 		glViewport(0, 0, width, height);
-		render.Renderer1(RockShader, *camera, Rock, glm::vec3(30.0f, -7.7f, -62.0f), glm::vec3(32.30f, 0.30f, 9.30f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(1.0f, 0.0f, 0.0f), 7.0f);
+		render.Renderer1(RockShader, *camera, Rock, glm::vec3(30.0f, -7.2f, -62.0f), glm::vec3(32.30f, 0.6f, 9.30f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(1.0f, 0.0f, 0.0f), 7.0f);
 
 		glViewport(0, 0, width, height);
-		render.Renderer1(RockShader, *camera, Rock, glm::vec3(-275.0f, -7.5f, 60.0f), glm::vec3(9.30f, 0.30f, 22.30f), glm::vec3(1.0f, 0.0f, 0.0f), 1.0f, glm::vec3(1.0f, 0.0f, 0.0f), 1.0f);
+		render.Renderer1(RockShader, *camera, Rock, glm::vec3(-275.0f, -7.2f, 60.0f), glm::vec3(9.30f, 0.6f, 22.30f), glm::vec3(1.0f, 0.0f, 0.0f), 1.0f, glm::vec3(1.0f, 0.0f, 0.0f), 1.0f);
 
 		glViewport(0, 0, width, height);
-		render.Renderer1(RockShader, *camera, Rock, glm::vec3(-275.0f, -7.5f, -95.0f), glm::vec3(45.30f, 0.30f, 12.30f), glm::vec3(1.0f, 0.0f, 0.0f), 1.0f, glm::vec3(1.0f, 0.0f, 0.0f), 1.0f);
+		render.Renderer1(RockShader, *camera, Rock, glm::vec3(-275.0f, -7.2f, -95.0f), glm::vec3(45.30f, 0.6f, 12.30f), glm::vec3(1.0f, 0.0f, 0.0f), 1.0f, glm::vec3(1.0f, 0.0f, 0.0f), 1.0f);
 
 		glViewport(0, 0, width, height);
-		render.Renderer1(RockShader, *camera, Rock, glm::vec3(-85.0f, -7.5f, 197.0f), glm::vec3(8.30f, 0.30f, 18.30f), glm::vec3(1.0f, 0.0f, 0.0f), 1.0f, glm::vec3(1.0f, 0.0f, 0.0f), 1.0f);
+		render.Renderer1(RockShader, *camera, Rock, glm::vec3(-85.0f, -7.2f, 197.0f), glm::vec3(8.30f, 0.6f, 18.30f), glm::vec3(1.0f, 0.0f, 0.0f), 1.0f, glm::vec3(1.0f, 0.0f, 0.0f), 1.0f);
 
 		glViewport(0, 0, width, height);
-		render.Renderer1(RockShader, *camera, Rock, glm::vec3(-180.0f, -7.7f, -62.0f), glm::vec3(32.30f, 0.30f, 9.30f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(1.0f, 0.0f, 0.0f), 7.0f);
+		render.Renderer1(RockShader, *camera, Rock, glm::vec3(-180.0f, -7.2f, -62.0f), glm::vec3(32.30f, 0.6f, 9.30f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(1.0f, 0.0f, 0.0f), 7.0f);
 
 		glViewport(0, 0, width, height);
-		render.Renderer1(RockShader, *camera, Rock, glm::vec3(25.0f, -7.7f, 235.0f), glm::vec3(32.30f, 0.30f, 9.30f), glm::vec3(0.0f, 0.0f, 1.0f), 7.0f, glm::vec3(1.0f, 0.0f, 0.0f), 90.0f);
+		render.Renderer1(RockShader, *camera, Rock, glm::vec3(25.0f, -7.2f, 235.0f), glm::vec3(32.30f, 0.6f, 9.30f), glm::vec3(0.0f, 0.0f, 1.0f), 7.0f, glm::vec3(1.0f, 0.0f, 0.0f), 90.0f);
 
 		glViewport(0, 0, width, height);
-		render.Renderer1(RockShader, *camera, Rock, glm::vec3(-390.0f, -7.7f, -62.0f), glm::vec3(32.30f, 0.30f, 9.30f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(1.0f, 0.0f, 0.0f), 7.0f);
+		render.Renderer1(RockShader, *camera, Rock, glm::vec3(-390.0f, -7.2f, -62.0f), glm::vec3(32.30f, 0.6f, 9.30f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(1.0f, 0.0f, 0.0f), 7.0f);
 
 		glViewport(0, 0, width, height);
-		render.Renderer1(RockShader, *camera, Rock, glm::vec3(-600.0f, -7.7f, -62.0f), glm::vec3(32.30f, 0.30f, 9.30f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(1.0f, 0.0f, 0.0f), 7.0f);
+		render.Renderer1(RockShader, *camera, Rock, glm::vec3(-600.0f, -7.2f, -62.0f), glm::vec3(32.30f, 0.6f, 9.30f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(1.0f, 0.0f, 0.0f), 7.0f);
 
 		glViewport(0, 0, width, height);
 		render.Renderer1(TapirShader, *camera, Tapir, glm::vec3(-580.0f, -7.7f, -150.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), 35.0f);
@@ -441,7 +442,7 @@ int main()
 		//animal fences
 
 		glViewport(0, 0, width, height);
-		render.Renderer1(RockShader, *camera, Rock, glm::vec3(-180.0f, -7.7f, 145.0f), glm::vec3(32.30f, 0.30f, 9.30f), glm::vec3(0.0f, 0.0f, 1.0f), 7.0f, glm::vec3(1.0f, 0.0f, 0.0f), 90.0f);
+		render.Renderer1(RockShader, *camera, Rock, glm::vec3(-180.0f, -7.2f, 145.0f), glm::vec3(32.30f, 0.6f, 9.30f), glm::vec3(0.0f, 0.0f, 1.0f), 7.0f, glm::vec3(1.0f, 0.0f, 0.0f), 90.0f);
 
 
 
@@ -530,46 +531,46 @@ int main()
 
 
 		glViewport(0, 0, width, height);
-		render.Renderer(HumanShader, *camera, Human, glm::vec3(200.0f, -6.0f, -480.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(200.0f, -5.5f, -480.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(HumanShader, *camera, Human, glm::vec3(-50.0f, -6.0f, -40.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(-50.0f, -5.5f, -40.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(HumanShader, *camera, Human, glm::vec3(-250.0f, -6.0f, -200.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(-250.0f, -5.5f, -200.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(HumanShader, *camera, Human, glm::vec3(341.0f, -6.0f, 100.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(341.0f, -5.5f, 100.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(HumanShader, *camera, Human, glm::vec3(210.0f, -6.0f, 30.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(210.0f, -5.5f, 30.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(HumanShader, *camera, Human, glm::vec3(-21.0f, -6.0f, -210.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(-21.0f, -5.5f, -210.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(HumanShader, *camera, Human, glm::vec3(500.0f, -6.0f, 300.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(500.0f, -5.5f, 300.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(HumanShader, *camera, Human, glm::vec3(-590.0f, -6.0f, 21.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(-590.0f, -5.5f, 21.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(HumanShader, *camera, Human, glm::vec3(-450.0f, -6.0f, 145.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(-450.0f, -5.5f, 145.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(HumanShader, *camera, Human, glm::vec3(-340.0f, -6.0f, 210.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(-340.0f, -5.5f, 210.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(HumanShader, *camera, Human, glm::vec3(-450.0f, -6.0f, 145.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(-450.0f, -5.5f, 145.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(HumanShader, *camera, Human, glm::vec3(210.0f, -6.0f, -550.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(210.0f, -5.5f, -550.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(HumanShader, *camera, Human, glm::vec3(-40.0f, -6.0f, 25.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(-40.0f, -5.5f, 25.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(HumanShader, *camera, Human, glm::vec3(-550.0f, -6.0f, -550.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(-550.0f, -5.5f, -550.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(HumanShader, *camera, Human, glm::vec3(318.0f, -6.0f, 456.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(318.0f, -5.5f, 456.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(HumanShader, *camera, Human, glm::vec3(120.0f, -6.0f, -550.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(120.0f, -5.5f, -550.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(HumanShader, *camera, Human, glm::vec3(-410.0f, -6.0f, 625.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(-410.0f, -5.5f, 625.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(HumanShader, *camera, Human, glm::vec3(410.0f, -6.0f, 450.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(410.0f, -5.5f, 450.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(HumanShader, *camera, Human, glm::vec3(213.0f, -6.0f, -435.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
-		render.Renderer(HumanShader, *camera, Human, glm::vec3(567.0f, -6.0f, -100.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(213.0f, -5.5f, -435.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(567.0f, -5.5f, -100.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(HumanShader, *camera, Human, glm::vec3(610.0f, -6.0f, 100.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(610.0f, -5.5f, 100.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
 		glViewport(0, 0, width, height);
 		render.Renderer(TreeShader, *camera, Tree, glm::vec3(150.0f, -2.0f, 100.0f), glm::vec3(45.0f, 45.0f, 45.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
 		glViewport(0, 0, width, height);
@@ -591,6 +592,47 @@ int main()
 		glViewport(0, 0, width, height);
 		render.Renderer(TreeShader, *camera, Tree, glm::vec3(420.0f, -2.0f, 400.0f), glm::vec3(45.0f, 45.0f, 45.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
 
+
+		glViewport(0, 0, width, height);
+		render.Renderer(PalmShader, *camera, Palm, glm::vec3(6.0f, -7.0f, 6.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(PalmShader, *camera, Palm, glm::vec3(206.0f, -7.0f, 6.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(PalmShader, *camera, Palm, glm::vec3(-306.0f, -7.0f, 6.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(PalmShader, *camera, Palm, glm::vec3(6.0f, -7.0f, 306.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(PalmShader, *camera, Palm, glm::vec3(306.0f, -7.0f, 306.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(PalmShader, *camera, Palm, glm::vec3(-106.0f, -7.0f, 206.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(PalmShader, *camera, Palm, glm::vec3(6.0f, -7.0f, -306.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(PalmShader, *camera, Palm, glm::vec3(156.0f, -7.0f, -206.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(PalmShader, *camera, Palm, glm::vec3(-206.0f, -7.0f, -306.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(PalmShader, *camera, Palm, glm::vec3(-506.0f, -7.0f, -206.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
+
+
+
+		render.Renderer(PalmShader, *camera, Palm, glm::vec3(194.0f, -7.0f, 6.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(PalmShader, *camera, Palm, glm::vec3(-294.0f, -7.0f, 6.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(PalmShader, *camera, Palm, glm::vec3(6.0f, -7.0f, 294.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(PalmShader, *camera, Palm, glm::vec3(294.0f, -7.0f, 294.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(PalmShader, *camera, Palm, glm::vec3(-106.0f, -7.0f, 194.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(PalmShader, *camera, Palm, glm::vec3(6.0f, -7.0f, -294.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(PalmShader, *camera, Palm, glm::vec3(156.0f, -7.0f, -194.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(PalmShader, *camera, Palm, glm::vec3(-194.0f, -7.0f, -306.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(PalmShader, *camera, Palm, glm::vec3(-506.0f, -7.0f, -194.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 0.0f, 0.0f), 0.0f);
 
 		glDepthFunc(GL_LEQUAL);
 		skyboxShader.Use();
