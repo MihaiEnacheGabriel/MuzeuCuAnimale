@@ -132,6 +132,9 @@ int main()
 	Shader HumanShader("firstObj.vs", "firstObj.fs");
 	Shader TreeShader("firstObj.vs", "firstObj.fs");
 	Shader FoxShader("firstObj.vs", "firstObj.fs");
+	Shader DeerShader("firstObj.vs", "firstObj.fs");
+	Shader HorseShader("firstObj.vs", "firstObj.fs");
+	Shader TapirShader("firstObj.vs", "firstObj.fs");
 	// Take care of all the light related things
 	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
@@ -159,7 +162,6 @@ int main()
 
 	std::string parentDir = (fs::current_path().fs::path::parent_path()).string();
 	std::string cageObjFileName = (parentDir + "\\OBJ\\OBJ\\Kennel_Dog_Corona.obj");
-	std::string horseObjFileName = (parentDir + "\\OBJ\\Horse\\Horse.obj");
 	std::string parrotObjFileName = (parentDir + "\\OBJ\\Parrot\\10032_Parrot_V1_L3.obj");
 	std::string fenceObjFileName = (parentDir + "\\OBJ\\Fence\\fence.obj");
 	std::string IguanaObjFileName = (parentDir + "\\OBJ\\Iguana\\Iguana.obj");
@@ -173,6 +175,9 @@ int main()
 	std::string HumanObjFileName = (parentDir + "\\OBJ\\Human\\Human\\ObjFbx\\Human.obj");
 	std::string TreeObjFileName = (parentDir + "\\OBJ\\Tree\\Tree\\Tree.obj");
 	std::string foxObjFileName = (parentDir + "\\OBJ\\Fox\\fox.obj");
+	std::string deerObjFileName = (parentDir + "\\OBJ\\Deer\\Deer.obj");
+	std::string horseObjFileName = (parentDir + "\\OBJ\\Horse2\\horse.obj");
+	std::string tapirObjFileName = (parentDir + "\\OBJ\\Tapir\\tapir.obj");
 	Model Cage(cageObjFileName, false);
 	Model Horse(horseObjFileName, false);
 	Model Parrot(parrotObjFileName, false);
@@ -188,6 +193,9 @@ int main()
 	Model Human(HumanObjFileName, false);
 	Model Tree(TreeObjFileName, false);
 	Model Fox(foxObjFileName, false);
+	Model Deer(deerObjFileName, false);
+	Model Hoser(horseObjFileName, false);
+	Model Tapir(tapirObjFileName, false);
 	std::string WallObjFileName = (parentDir + "\\OBJ\\Wall\\BrickWall.obj");
 	Model Wall(WallObjFileName, false);
 	// Create VAO, VBO, and EBO for the skybox
@@ -328,11 +336,11 @@ int main()
 		render.Renderer1(LionShader, *camera, Lion, glm::vec3(-175.0f, -7.7f, 50.0f), glm::vec3(0.13f, 0.13f, 0.13f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), 150.0f);
 
 		glViewport(0, 0, width, height);
-		render.Renderer(WolfShader, *camera, Wolf, glm::vec3(-400.0f, -7.7f, 80.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f);
+		render.Renderer1(WolfShader, *camera, Wolf, glm::vec3(-400.0f, -7.7f, 80.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), 30.0f);
 		glViewport(0, 0, width, height);
 		render.Renderer(WolfShader, *camera, Wolf, glm::vec3(-415.0f, -7.7f, 65.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f);
 		glViewport(0, 0, width, height);
-		render.Renderer(WolfShader, *camera, Wolf, glm::vec3(-435.0f, -7.7f, 75.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f);
+		render.Renderer1(WolfShader, *camera, Wolf, glm::vec3(-435.0f, -7.7f, 75.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), -30.0f);
 
 		glViewport(0, 0, width, height);
 		render.Renderer1(PenguinShader, *camera, Penguin, glm::vec3(-180.0f, -7.7f, 225.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), 90.0f);
@@ -352,7 +360,27 @@ int main()
 		render.Renderer1(FoxShader, *camera, Fox, glm::vec3(-100.0f, -7.7f, -230.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), -30.0f);
 
 		glViewport(0, 0, width, height);
+		render.Renderer1(DeerShader, *camera, Deer, glm::vec3(10.0f, -7.7f, -160.0f), glm::vec3(0.45f, 0.45f, 0.45f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), 225.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer1(DeerShader, *camera, Deer, glm::vec3(0.0f, -7.7f, -160.0f), glm::vec3(0.3f, 0.3f, 0.3f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), 225.0f);
+
+		glViewport(0, 0, width, height);
+		render.Renderer1(HorseShader, *camera, Horse, glm::vec3(-280.0f, -7.7f, -230.0f), glm::vec3(0.017f, 0.017f, 0.017f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), -35.0f);
+
+		glViewport(0, 0, width, height);
 		render.Renderer1(BearShader, *camera, Bear, glm::vec3(200.0f, -7.7f, 350.0f), glm::vec3(0.30f, 0.30f, 0.30f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), 250.0f);
+
+		glViewport(0, 0, width, height);
+		render.Renderer1(TapirShader, *camera, Tapir, glm::vec3(-580.0f, -7.7f, -150.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), 35.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer1(TapirShader, *camera, Tapir, glm::vec3(-600.0f, -7.7f, -130.0f), glm::vec3(0.23f, 0.23f, 0.23f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), 100.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer1(TapirShader, *camera, Tapir, glm::vec3(-620.0f, -7.7f, -155.0f), glm::vec3(0.18f, 0.18f, 0.18f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), 150.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer1(TapirShader, *camera, Tapir, glm::vec3(-580.0f, -7.7f, -135.0f), glm::vec3(0.15f, 0.15f, 0.15f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f),200.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer1(TapirShader, *camera, Tapir, glm::vec3(-615.0f, -7.7f, -140.0f), glm::vec3(0.25f, 0.25f, 0.25f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f, glm::vec3(0.0f, 0.0f, 1.0f), -35.0f);
+
 		//animal fences
 
 		glViewport(0, 0, width, height);
