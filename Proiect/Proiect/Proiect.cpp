@@ -123,6 +123,9 @@ int main()
 	Shader MountainShader("firstObj.vs", "firstObj.fs");
 	Shader IguanaShader("firstObj.vs", "firstObj.fs");
 	Shader WallShader("firstObj.vs", "firstObj.fs");
+	Shader FocaShader("firstObj.vs", "firstObj.fs");
+	Shader LionShader("firstObj.vs", "firstObj.fs");
+	Shader WolfShader("firstObj.vs", "firstObj.fs");
 	// Take care of all the light related things
 	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
@@ -155,12 +158,18 @@ int main()
 	std::string fenceObjFileName = (parentDir + "\\OBJ\\Fence\\fence.obj");
 	std::string IguanaObjFileName = (parentDir + "\\OBJ\\Iguana\\Iguana.obj");
 	std::string mountainObjFileName = (parentDir + "\\OBJ\\Rock_9\\Rock_9\\Rock_9.obj");
+	std::string focaObjFileName = (parentDir + "\\OBJ\\foca\\foca.obj");
+	std::string lionObjFileName = (parentDir + "\\OBJ\\Lion\\lion.obj");
+	std::string wolfObjFileName = (parentDir + "\\OBJ\\Wolf\\Wolf.obj");
 	Model Cage(cageObjFileName, false);
 	Model Horse(horseObjFileName, false);
 	Model Parrot(parrotObjFileName, false);
 	Model Fence(fenceObjFileName, false);
 	Model Mountain(mountainObjFileName, false);
 	Model Iguana(IguanaObjFileName, false);
+	Model Foca(focaObjFileName, false);
+	Model Lion(lionObjFileName, false);
+	Model Wolf(wolfObjFileName, false);
 
 
 	std::string WallObjFileName = (parentDir + "\\OBJ\\Wall\\BrickWall.obj");
@@ -279,18 +288,29 @@ int main()
 		ObjRenderer render;
 		//render.Renderer(Horseshader, *camera, Horse, glm::vec3(-0.0f, -7.7f, 20.0f), glm::vec3(5.0f, 5.0f, 5.0f), glm::vec3(1.0f, 1.0f, 1.0f), 0.0f);
 		
-
-		//glViewport(0, 0, width, height);
-		//render.Renderer(Cageshader, *camera, Cage,glm::vec3(-30.0f, -7.7f, 0.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(1.0f, 1.0f, 1.0f), 0.0f);
-		
-
-		//glViewport(0, 0, width, height);
-		//render.Renderer(ParrotShader, *camera, Parrot, glm::vec3(-30.0f, 2.7f, 0.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.1f, 0.1f, 0.1f), -90.0f);
-
+		glViewport(0, 0, width, height);
+		render.Renderer(Cageshader, *camera, Cage, glm::vec3(-650.0f, -7.7f, 0.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(1.0f, 1.0f, 1.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(ParrotShader, *camera, Parrot, glm::vec3(-655.0f, 2.7f, 2.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.9f, 0.1f, 1.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(ParrotShader, *camera, Parrot, glm::vec3(-650.0f, 2.7f, -1.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.3f, 0.2f, 0.5f), -90.0f);
 		glViewport(0, 0, width, height);
 		render.Renderer(Cageshader, *camera, Cage, glm::vec3(-600.0f, -7.7f, 0.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(1.0f, 1.0f, 1.0f), 0.0f);
 		glViewport(0, 0, width, height);
 		render.Renderer(IguanaShader, *camera, Iguana, glm::vec3(-600.0f, -6.0f, 0.0f), glm::vec3(0.6f, 0.6f, 0.6f), glm::vec3(1.0f, 1.0f, 1.0f), 10.0f);
+
+		glViewport(0, 0, width, height);
+		render.Renderer(FocaShader, *camera, Foca, glm::vec3(30.0f, -7.7f, 30.0f), glm::vec3(0.14f, 0.14f, 0.14f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f);
+
+		glViewport(0, 0, width, height);
+		render.Renderer(LionShader, *camera, Lion, glm::vec3(-170.0f, -7.7f, 30.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f);
+
+		glViewport(0, 0, width, height);
+		render.Renderer(WolfShader, *camera, Wolf, glm::vec3(-400.0f, -7.7f, 80.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(WolfShader, *camera, Wolf, glm::vec3(-415.0f, -7.7f, 65.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(WolfShader, *camera, Wolf, glm::vec3(-435.0f, -7.7f, 75.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(1.0f, 0.0f, 0.0f), -90.0f);
 		//animal fences
 
 		glViewport(0, 0, width, height);
@@ -315,22 +335,22 @@ int main()
 
 			// Render fences for the bottom
 			for (int i = 0; i < 5; i++) {
-				render.Renderer(FenceShader, *camera, Fence, glm::vec3(-170.0f + i * 30.0f + offsetX, -7.7f, offsetZ), glm::vec3(15.0f, 15.0f, 15.0f), glm::vec3(0.0f, 1.0f, 0.0f), 90.0f);
+				render.Renderer(FenceShader, *camera, Fence, glm::vec3(-170.0f + i * 30.0f + offsetX, -7.7f, offsetZ), glm::vec3(15.0f, 18.0f, 15.0f), glm::vec3(0.0f, 1.0f, 0.0f), 90.0f);
 			}
 
 			// Render fences for the top edge
 			for (int i = 0; i < 5; i++) {
-				render.Renderer(FenceShader, *camera, Fence, glm::vec3(-170.0f + i * 30.0f + offsetX, -7.7f, 90.0f + offsetZ), glm::vec3(15.0f, 15.0f, 15.0f), glm::vec3(0.0f, 1.0f, 0.0f), 90.0f);
+				render.Renderer(FenceShader, *camera, Fence, glm::vec3(-170.0f + i * 30.0f + offsetX, -7.7f, 90.0f + offsetZ), glm::vec3(15.0f, 18.0f, 15.0f), glm::vec3(0.0f, 1.0f, 0.0f), 90.0f);
 			}
 
 			// Render fences for the left edge
 			for (int i = 1; i < 4; i++) {
-				render.Renderer(FenceShader, *camera, Fence, glm::vec3(-200.0f + offsetX, -7.7f, i * 30.0f + offsetZ), glm::vec3(15.0f, 15.0f, 15.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
+				render.Renderer(FenceShader, *camera, Fence, glm::vec3(-200.0f + offsetX, -7.7f, i * 30.0f + offsetZ), glm::vec3(15.0f, 18.0f, 15.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
 			}
 
 			// Render fences for the right edge
 			for (int i = 1; i < 4; i++) {
-				render.Renderer(FenceShader, *camera, Fence, glm::vec3(-50.0f + offsetX, -7.7f, i * 30.0f + offsetZ), glm::vec3(15.0f, 15.0f, 15.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
+				render.Renderer(FenceShader, *camera, Fence, glm::vec3(-50.0f + offsetX, -7.7f, i * 30.0f + offsetZ), glm::vec3(15.0f, 18.0f, 15.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
 			}
 		}
 		int z = 550;
