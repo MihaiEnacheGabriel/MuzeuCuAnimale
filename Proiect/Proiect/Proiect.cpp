@@ -18,6 +18,7 @@ namespace fs = std::filesystem;
 
 const unsigned int width = 800;
 const unsigned int height = 800;
+const unsigned int SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
 
 
 #pragma comment (lib,"glew32.lib")
@@ -110,8 +111,6 @@ int main()
 
 
 
-
-
 	// Generates Shader objects
 
 	Shader skyboxShader("skyboxShader.vs", "skyboxShader.fs");
@@ -198,6 +197,34 @@ int main()
 	Model Tapir(tapirObjFileName, false);
 	std::string WallObjFileName = (parentDir + "\\OBJ\\Wall\\BrickWall.obj");
 	Model Wall(WallObjFileName, false);
+
+
+	////////////////////////////////////////////////////////////////////////////////
+
+	unsigned int depthMapFBO;
+	glGenFramebuffers(1, &depthMapFBO);
+
+	// Create a 2D texture that we'll use as the framebuffer's depth buffer
+	unsigned int depthMap;
+	glGenTextures(1, &depthMap);
+	glBindTexture(GL_TEXTURE_2D, depthMap);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, SHADOW_WIDTH, SHADOW_HEIGHT, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+	float borderColor[] = { 1.0, 1.0, 1.0, 1.0 };
+	glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
+
+	// Attach the depth texture to the framebuffer
+	glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
+	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthMap, 0);
+	glDrawBuffer(GL_NONE);
+	glReadBuffer(GL_NONE);
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+	//////////////////////////////////////////////////////////////////////////////
+
 	// Create VAO, VBO, and EBO for the skybox
 	unsigned int skyboxVAO, skyboxVBO, skyboxEBO;
 	glGenVertexArrays(1, &skyboxVAO);
@@ -303,6 +330,8 @@ int main()
 		floorShader.Use();
 		floor.setUp(*camera, floorShader, floorTexture);
 		floor.renderScene(floorShader);
+
+
 
 		camera->Inputs(window);
 		processInput(window);
