@@ -129,6 +129,8 @@ int main()
 	Shader PenguinShader("firstObj.vs", "firstObj.fs");
 	Shader CaimanShader("firstObj.vs", "firstObj.fs");
 	Shader BearShader("firstObj.vs", "firstObj.fs");
+	Shader HumanShader("firstObj.vs", "firstObj.fs");
+	Shader TreeShader("firstObj.vs", "firstObj.fs");
 	// Take care of all the light related things
 	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
@@ -160,13 +162,15 @@ int main()
 	std::string parrotObjFileName = (parentDir + "\\OBJ\\Parrot\\10032_Parrot_V1_L3.obj");
 	std::string fenceObjFileName = (parentDir + "\\OBJ\\Fence\\fence.obj");
 	std::string IguanaObjFileName = (parentDir + "\\OBJ\\Iguana\\Iguana.obj");
-	std::string mountainObjFileName = (parentDir + "\\OBJ\\Rock_9\\Rock_9\\Rock_9.obj");
+	std::string mountainObjFileName = (parentDir + "\\OBJ\\Mountain\\mountain\\mount.blend1.obj");
 	std::string focaObjFileName = (parentDir + "\\OBJ\\foca\\foca.obj");
 	std::string lionObjFileName = (parentDir + "\\OBJ\\Lion\\lion.obj");
 	std::string wolfObjFileName = (parentDir + "\\OBJ\\Wolf\\Wolf.obj");
 	std::string penguinObjFileName = (parentDir + "\\OBJ\\Penguin\\Penguin.obj");
 	std::string bearObjFileName = (parentDir + "\\OBJ\\Bear\\bear.obj");
 	std::string caimanObjFileName = (parentDir + "\\OBJ\\Caiman\\caiman.obj");
+	std::string HumanObjFileName = (parentDir + "\\OBJ\\Human\\Human\\ObjFbx\\Human.obj");
+	std::string TreeObjFileName = (parentDir + "\\OBJ\\Tree\\Tree\\Tree.obj");
 	Model Cage(cageObjFileName, false);
 	Model Horse(horseObjFileName, false);
 	Model Parrot(parrotObjFileName, false);
@@ -179,7 +183,8 @@ int main()
 	Model Penguin(penguinObjFileName, false);
 	Model Bear(bearObjFileName, false);
 	Model Caiman(caimanObjFileName, false);
-
+	Model Human(HumanObjFileName, false);
+	Model Tree(TreeObjFileName, false);
 	std::string WallObjFileName = (parentDir + "\\OBJ\\Wall\\BrickWall.obj");
 	Model Wall(WallObjFileName, false);
 	// Create VAO, VBO, and EBO for the skybox
@@ -425,8 +430,72 @@ int main()
 				angle = 180.0f;
 			else
 				angle = 90.0f;
-			render.Renderer(MountainShader, *camera, Mountain, glm::vec3(x, 2.7f, z), glm::vec3(100.0f, 100.0f, 100.0f), glm::vec3(1.0f, 1.0f, 1.0f), 90.0f);
+			render.Renderer(MountainShader, *camera, Mountain, glm::vec3(x, 2.7f, z), glm::vec3(100.0f, 100.0f, 100.0f), glm::vec3(1.0f, 1.0f, 1.0f), 0.0f);
 		}
+
+
+		glViewport(0, 0, width, height);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(200.0f, -6.0f, -480.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(-50.0f, -6.0f, -40.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(-250.0f, -6.0f, -200.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(341.0f, -6.0f, 100.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(210.0f, -6.0f, 30.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(-21.0f, -6.0f, -210.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(500.0f, -6.0f, 300.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(-590.0f, -6.0f, 21.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(-450.0f, -6.0f, 145.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(-340.0f, -6.0f, 210.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(-450.0f, -6.0f, 145.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(210.0f, -6.0f, -550.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(-40.0f, -6.0f, 25.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(-550.0f, -6.0f, -550.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(318.0f, -6.0f, 456.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(120.0f, -6.0f, -550.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(-410.0f, -6.0f, 625.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(410.0f, -6.0f, 450.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(213.0f, -6.0f, -435.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(567.0f, -6.0f, -100.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(HumanShader, *camera, Human, glm::vec3(610.0f, -6.0f, 100.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(TreeShader, *camera, Tree, glm::vec3(150.0f, -2.0f, 100.0f), glm::vec3(45.0f, 45.0f, 45.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(TreeShader, *camera, Tree, glm::vec3(340.0f, -2.0f, -100.0f), glm::vec3(45.0f, 45.0f, 45.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(TreeShader, *camera, Tree, glm::vec3(210.0f, -2.0f, 430.0f), glm::vec3(45.0f, 45.0f, 45.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		glViewport(0, 0, width, height);
+		render.Renderer(TreeShader, *camera, Tree, glm::vec3(-150.0f, -2.0f, 170.0f), glm::vec3(45.0f, 45.0f, 45.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
+		render.Renderer(TreeShader, *camera, Tree, glm::vec3(-200.0f, -2.0f, -360.0f), glm::vec3(45.0f, 45.0f, 45.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(TreeShader, *camera, Tree, glm::vec3(-520.0f, -2.0f, 300.0f), glm::vec3(45.0f, 45.0f, 45.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(TreeShader, *camera, Tree, glm::vec3(520.0f, -2.0f, -200.0f), glm::vec3(45.0f, 45.0f, 45.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(TreeShader, *camera, Tree, glm::vec3(320.0f, -2.0f, -400.0f), glm::vec3(45.0f, 45.0f, 45.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(TreeShader, *camera, Tree, glm::vec3(-520.0f, -2.0f, -200.0f), glm::vec3(45.0f, 45.0f, 45.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
+		glViewport(0, 0, width, height);
+		render.Renderer(TreeShader, *camera, Tree, glm::vec3(420.0f, -2.0f, 400.0f), glm::vec3(45.0f, 45.0f, 45.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f);
+
 
 		glDepthFunc(GL_LEQUAL);
 		skyboxShader.Use();
