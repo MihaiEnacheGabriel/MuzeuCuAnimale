@@ -1,0 +1,16 @@
+WalkForward:10-40
+TurnRight:50-80
+TurnLeft:90-120
+WalkBack:130-160
+Idle:170-200
+IdleAttack:210-240
+IdleHit:250-280
+Death:290-320
+Rebirth:330-370
+
+Eat:370-400
+EatDown:410-440
+Chewing:450-480
+
+WalkAttack:490-520
+WalkHit:530-560
