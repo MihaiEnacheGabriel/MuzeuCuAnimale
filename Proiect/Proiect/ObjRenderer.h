@@ -18,5 +18,6 @@ class ObjRenderer
 {
 public:
 	void Renderer(Shader& shader, Camera& camera, Model& m, glm::vec3 translate,glm::vec3 scale, glm::vec3 rotate,float angle);
+	void Renderer1(Shader& shader, Camera& camera, Model& m, glm::vec3 translate, glm::vec3 scale, glm::vec3 rotate, float angle, glm::vec3 rotate1, float angle1);
 };
 
